@@ -1,0 +1,23 @@
+{
+  "name": "katquinny-lab5",
+  "version": "1.0.0",
+  "description": "I dont know how but I broke the first one, copying most of what I had onto here",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaristGormanly/katquinny-lab5.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaristGormanly/katquinny-lab5/issues"
+  },
+  "homepage": "https://github.com/MaristGormanly/katquinny-lab5#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
