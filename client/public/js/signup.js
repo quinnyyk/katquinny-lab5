@@ -55,3 +55,27 @@ termCond.addEventListener('change', () => {
         signup.disabled = true;
     }
 })
+
+// save a user
+exports.saveUser = ( req, res ) => {
+    let newUser = user.createUser( req.body.firstName, req.body.lastName, req.body.email, req.body.username, req.body.password );
+    users.push( newUser );
+    res.setHeader( 'Content-Type', 'application/json' );
+    res.send( users );
+    }
+
+let base64 = require('base-64');
+
+let url = 'http://localhost:1337/signup.html';
+
+let headers = new Headers();
+
+headers.set('Authorization', 'Basic ' + Buffer.from(username + ":" + password).toString('base64'));
+    
+fetch(url, {method:'GET',
+        headers: headers,
+        credentials: 'user'
+           })
+.then(response => response.json())
+.then(json => console.log(json))
+.done();

@@ -24,13 +24,15 @@ res.setHeader( 'Content-Type', 'application/json' );
 res.send( users[ req.params.index ] );
 }
 
-// save a user
-exports.saveUser = ( req, res ) => {
-    let newUser = user.createUser( req.body.firstName, req.body.lastName, req.body.email, req.body.username, req.body.password );
-    users.push( newUser );
-    res.setHeader( 'Content-Type', 'application/json' );
-    res.send( users );
-    }
+exports.saveUser = function(req, res) {
+	let newUser = user.createUser(req.body.firstName, req.body.lastName, req.body.email, req.body.password);
+	users.push(newUser);
+	res.setHeader('Content-Type', 'application/json');
+	res.send(users);
+}
 
-
-        
+exports.deleteUser = function(req, res) {
+	users.splice(req.params.userId, 1);
+	res.setHeader('Content-Type', 'application/json');
+	res.send(users);
+}

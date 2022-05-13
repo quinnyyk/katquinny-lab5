@@ -16,9 +16,6 @@ feedbackController.searchAllFeedback( req, res );
 feedbackController.saveFeedback( req, res );
 }
 )
-.put( (req, res) => {
-feedbackController.updateFeedback( req, res );
-})
 
 // user by array index route
 router.route('/:index')

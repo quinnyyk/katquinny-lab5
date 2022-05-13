@@ -2,17 +2,27 @@
 const loginForm = document.getElementById("login-form");
 const loginButton = document.getElementById("login-form-submit");
 const loginErrorMsg = document.getElementById("login-error-msg");
-// when use clicks login, their username and password are being store in the username and password variables
-loginButton.addEventListener("click", (e) => {
-    e.preventDefault();
-    const username = loginForm.username.value;
-    const password = loginForm.password.value;
-// checking to see if the username and password are the ones i setup for the demo
-    if (username === "user" && password === "password") {
-        alert("You have successfully logged in.");
-        location.reload();
-    } else {
-        // if wwrong it shows an error message is true
-        loginErrorMsg.style.opacity = 1;
-    }
-})
+
+function authenticateUser(req, res, done) {
+
+    let username = req.body.username,
+        password = req.body.password,
+        email    = req.body.email;
+    let conditions = !!username ? {username: username} : {email: email};
+  
+    user.findOne(conditions, (err, user) => {
+      if (err)   return done(err);
+      if (!user) return done(new Error('Incorrect username or email'));
+  
+      return user.comparePassword(password, user.password)
+      .then(match => {
+        if (match) done(window.open("http://localhost:1337/signup.html"));
+
+        else       return done(new Error('Incorrect password'));
+      })
+      .catch(error => {
+        if (error) return done(new Error(`Unable to validated password. - ${error}`));
+      });
+    });
+  
+  }

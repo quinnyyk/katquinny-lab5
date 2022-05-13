@@ -12,6 +12,14 @@ router.route('/')
 .get( ( req, res ) => {
 userController.getAllUsers( req, res );
 })
+
+router.route('/')
+.delete( ( req, res ) => {
+userController.deleteUser( req, res );
+})
+
+
+
 .post( ( req, res ) => {
 userController.saveUser( req, res );
 }
